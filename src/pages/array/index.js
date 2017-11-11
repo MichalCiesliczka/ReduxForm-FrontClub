@@ -1,5 +1,6 @@
 import React from 'react'
-import { reduxForm, Field, FieldArray } from 'redux-form';
+import { reduxForm, Field } from 'redux-form';
+// import { reduxForm, Field, FieldArray } from 'redux-form';
 
 import Button from 'material-ui/Button';
 
@@ -14,46 +15,45 @@ const sendDataToApi = (formData) => {
   })
 };
 
-const renderEmployees = ({ fields }) => (
-  <ul>
-    <li>
-      <Button
-        type="button"
-        raised
-        className="add-button"
-        onClick={() => fields.push({})}
-        >
-        Add employee
-      </Button>
-      {
-        fields.map((employee, index) => (
-          <div key={index} className="employee">
-            <Button
-              type="button"
-              onClick={() => fields.remove(index)}
-              color="accent"
-              fab
-              className="remove-button"
-            >
-              X
-            </Button>
-            <Field
-              name={`${employee}.firstName`}
-              component={Input}
-              label="First Name"
-            />
-            <Field
-              name={`${employee}.lastName`}
-              component={Input}
-              label="Last Name"
-            />
-          </div>
-        ))
-      }
-    </li>
-  </ul>
-)
-
+// const renderEmployees = ({ fields }) => (
+//   <ul>
+//     <li>
+//       <Button
+//         type="button"
+//         raised
+//         className="add-button"
+//         onClick={() => fields.push({})}
+//         >
+//         Add employee
+//       </Button>
+//       {
+//         fields.map((employee, index) => (
+//           <div key={index} className="employee">
+//             <Button
+//               type="button"
+//               onClick={() => fields.remove(index)}
+//               color="accent"
+//               fab
+//               className="remove-button"
+//             >
+//               X
+//             </Button>
+//             <Field
+//               name={`${employee}.firstName`}
+//               component={Input}
+//               label="First Name"
+//             />
+//             <Field
+//               name={`${employee}.lastName`}
+//               component={Input}
+//               label="Last Name"
+//             />
+//           </div>
+//         ))
+//       }
+//     </li>
+//   </ul>
+// )
 
 const ArrayForm = (props) => {
   const { handleSubmit, dirty, submitting, reset } = props;
@@ -67,10 +67,10 @@ const ArrayForm = (props) => {
           component={Input}
           label="Company name"
         />
-        <FieldArray
+        {/* <FieldArray
           name="employees"
           component={renderEmployees}
-        />
+        /> */}
         <Button
           onClick={reset}
           type="button"
