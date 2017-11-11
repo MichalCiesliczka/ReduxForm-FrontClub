@@ -3,9 +3,6 @@ import { Route, NavLink } from 'react-router-dom';
 import Button from 'material-ui/Button';
 
 import Home from './pages/home'
-import Validation from './pages/validation'
-import InitialValues from './pages/initial'
-import ArrayForm from './pages/array'
 
 import './App.css';
 
@@ -21,26 +18,8 @@ const App = () => (
           Home
         </NavLink>
       </Button>
-      <Button>
-        <NavLink to="/validation" activeClassName="is-active">
-          Validation
-        </NavLink>
-      </Button>
-      <Button>
-        <NavLink to="/initial-values" activeClassName="is-active">
-          Initial Values
-        </NavLink>
-      </Button>
-      <Button>
-        <NavLink to="/array" activeClassName="is-active">
-          Array form
-        </NavLink>
-      </Button>
     </nav>
 
-    <Route exact path="/validation" component={Validation} />
-    <Route path="/initial-values" component={InitialValues} />
-    <Route path="/array" component={ArrayForm} />
     <Route exact path="/" component={Home} />
   </div>
 )
