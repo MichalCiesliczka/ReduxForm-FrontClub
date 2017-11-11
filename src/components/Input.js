@@ -1,6 +1,6 @@
 import React from 'react';
+
 import TextField from 'material-ui/TextField'
-import { withStyles } from 'material-ui/styles';
 import { FormHelperText } from 'material-ui/Form';
 
 const Input = (props) => {
@@ -9,8 +9,7 @@ const Input = (props) => {
     label,
     meta: {
       touched,
-      error,
-      warning
+      error
     },
     ...custom
   } = props
@@ -31,15 +30,8 @@ const Input = (props) => {
           </FormHelperText>
         )
       }
-      {
-        touched && warning && (
-          <FormHelperText>
-            {warning}
-          </FormHelperText>
-        )
-      }
     </div>
   );
 }
 
-export default withStyles(null)(Input);
+export default Input;

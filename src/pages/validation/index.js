@@ -1,38 +1,10 @@
 import React from 'react';
-import { reduxForm, Field, SubmissionError } from 'redux-form';
+import { reduxForm, Field } from 'redux-form';
 
 import Button from 'material-ui/Button';
 import Chip from 'material-ui/Chip';
 
 import Input from '../../components/Input'
-
-const validate = values => {
-  let errors = {};
-
-  if (!values.firstName) {
-    errors.firstName = 'Please insert first name'
-  }
-
-  return errors;
-}
-
-const warn = values => {
-  let warnings = {};
-
-  if (values.firstName && 3 > values.firstName.length) {
-    warnings.firstName = 'Too short name'
-  }
-
-  return warnings;
-}
-
-const isGreaterThan10 = value => {
-  if (value && value < 10) {
-    return "Tooooo young"
-  }
-
-  return undefined;
-}
 
 const Validation = (props) => {
   const { handleSubmit, dirty, reset, submitting, submitFailed, submitSucceeded } = props;
@@ -41,11 +13,6 @@ const Validation = (props) => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         console.log(formData);
-        if (formData.email && 'asd@asd.pl' === formData.email) {
-          reject(new SubmissionError({
-            email: 'That is fake'
-          }))
-        }
         resolve();
       }, 2000);
     })
@@ -79,7 +46,6 @@ const Validation = (props) => {
           component={Input}
           type="number"
           label="Age"
-          validate={isGreaterThan10}
         />
         <Button
           onClick={reset}
@@ -103,6 +69,4 @@ const Validation = (props) => {
 
 export default reduxForm({
   form: 'validation',
-  validate,
-  warn,
 })(Validation);

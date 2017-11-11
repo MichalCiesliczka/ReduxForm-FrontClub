@@ -9,7 +9,6 @@ const InputCheckbox = ({
     <FormControlLabel
       control={
         <Checkbox
-          // value="checkedA"
           checked={input.value ? true : false}
           onChange={input.onChange}
         />
