@@ -8,6 +8,13 @@ import { loadInitialAccount } from '../../modules/appActions'
 import Input from '../../components/Input'
 import InputCheckbox from '../../components/InputCheckbox'
 
+const data = {
+  firstName: 'Michal',
+  email: 'michal.ciesliczka@xsolve.pl',
+  age: 24,
+  isOld: false,
+}
+
 const InitialValues = (props) => {
   const { handleSubmit, dirty, reset, submitting } = props;
 
@@ -20,26 +27,6 @@ const InitialValues = (props) => {
       }, 1000);
     })
   };
-
-  const upper = value => value && value.toUpperCase()
-
-  const isAbove25 = (value, prevVal, allValues) => {
-    if (value > 24) {
-      props.change('isOld', true)
-
-      return value
-    }
-
-    props.change('isOld', false)
-    return value
-  }
-
-  const data = {
-    firstName: 'Michal',
-    email: 'michal.ciesliczka@xsolve.pl',
-    age: 24,
-    isOld: false,
-  }
 
   return (
     <div>
@@ -68,20 +55,12 @@ const InitialValues = (props) => {
           component={Input}
           type="number"
           label="Age"
-          normalize={isAbove25}
         />
         <Field
           name="isOld"
           component={InputCheckbox}
           type="checkbox"
           label="Are you old?"
-        />
-        <Field
-          name="shout"
-          component={Input}
-          type="text"
-          label="Shout somthing"
-          normalize={upper}
         />
         <Button
           onClick={reset}
@@ -104,7 +83,6 @@ const InitialValues = (props) => {
 };
 
 const mapStateToProps = state => ({
-  initialValues: state.app.account,
 });
 
 const mapDispatchToProps = {
@@ -113,7 +91,6 @@ const mapDispatchToProps = {
 
 const InitialValuesForm = reduxForm({
   form: 'initial-values',
-  enableReinitialize: true,
 })(InitialValues);
 
 export default connect(mapStateToProps, mapDispatchToProps)(InitialValuesForm)
